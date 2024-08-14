@@ -33,6 +33,14 @@ public class myTestCases {
 			Assert.assertEquals(ActualLanguage, ExpectedDefaultLanage);
 		}
 		
+		@Test(priority = 2)
+		public void CheckdefaultCurrency() {
+			String ExpectedCurrency = "SAR";
+			
+			WebElement Currency = driver.findElement(By.xpath("//button[@data-testid='Header__CurrencySelector']"));
+			String ActualCurrency = Currency.getText();
 
+			Assert.assertEquals(ActualCurrency, ExpectedCurrency);
+		}
 	
 }
