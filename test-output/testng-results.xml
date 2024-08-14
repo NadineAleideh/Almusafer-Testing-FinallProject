@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-08-14T23:56:37 EET" name="Default suite" finished-at="2024-08-14T23:56:39 EET" duration-ms="2523">
+    <groups>
+    </groups>
+    <test started-at="2024-08-14T23:56:37 EET" name="Default test" finished-at="2024-08-14T23:56:39 EET" duration-ms="2523">
+      <class name="HomePage.myTestCases">
+        <test-method is-config="true" signature="mySetup()[pri:0, instance:HomePage.myTestCases@757d6814]" started-at="2024-08-14T23:56:37 EET" name="mySetup" finished-at="2024-08-14T23:56:39 EET" duration-ms="2355" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mySetup -->
+        <test-method signature="CheckTheDefaultLangugeIsEnglish()[pri:1, instance:HomePage.myTestCases@757d6814]" started-at="2024-08-14T23:56:39 EET" name="CheckTheDefaultLangugeIsEnglish" finished-at="2024-08-14T23:56:39 EET" duration-ms="31" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckTheDefaultLangugeIsEnglish -->
+        <test-method signature="CheckdefaultCurrency()[pri:2, instance:HomePage.myTestCases@757d6814]" started-at="2024-08-14T23:56:39 EET" name="CheckdefaultCurrency" finished-at="2024-08-14T23:56:39 EET" duration-ms="29" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckdefaultCurrency -->
+        <test-method signature="CheckContactNumber()[pri:3, instance:HomePage.myTestCases@757d6814]" started-at="2024-08-14T23:56:39 EET" name="CheckContactNumber" finished-at="2024-08-14T23:56:39 EET" duration-ms="21" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckContactNumber -->
+        <test-method signature="CheckQitagLogo()[pri:4, instance:HomePage.myTestCases@757d6814]" started-at="2024-08-14T23:56:39 EET" name="CheckQitagLogo" finished-at="2024-08-14T23:56:39 EET" duration-ms="53" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckQitagLogo -->
+      </class> <!-- HomePage.myTestCases -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

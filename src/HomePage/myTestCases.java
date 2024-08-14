@@ -51,5 +51,17 @@ public class myTestCases {
 			Assert.assertEquals(ActualContactNumber, ExpectedContactNumber);
 		}
 
-	
+		@Test(priority = 4)
+		public void CheckQitagLogo() {
+			boolean ExpectedResultsForTheLogo = true;
+			WebElement theFooter = driver.findElement(By.tagName("footer"));
+
+			WebElement logo = theFooter.findElement(By.cssSelector(".sc-fihHvN.eYrDjb"))
+					.findElement(By.cssSelector(".sc-bdVaJa.bxRSiR.sc-ekulBa.eYboXF"));
+
+			boolean ActualResultForThelogo = logo.isDisplayed();
+			
+			Assert.assertEquals(ActualResultForThelogo, ExpectedResultsForTheLogo);
+
+		}
 }
