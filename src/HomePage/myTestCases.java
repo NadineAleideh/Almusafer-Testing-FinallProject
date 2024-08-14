@@ -42,5 +42,14 @@ public class myTestCases {
 
 			Assert.assertEquals(ActualCurrency, ExpectedCurrency);
 		}
+		
+		@Test(priority = 3)
+		public void CheckContactNumber() {
+			String ExpectedContactNumber = "+966554400000";
+			String ActualContactNumber = driver.findElement(By.tagName("strong")).getText();
+
+			Assert.assertEquals(ActualContactNumber, ExpectedContactNumber);
+		}
+
 	
 }
