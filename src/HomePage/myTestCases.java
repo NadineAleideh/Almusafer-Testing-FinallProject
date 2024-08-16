@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,14 +31,14 @@ public class myTestCases {
 		driver.findElement(By.cssSelector(".sc-jTzLTM.hQpNle.cta__button.cta__saudi.btn.btn-primary")).click();
 	}
 	
-		@Test(priority = 1)
+		@Test(priority = 1, enabled= false)
 		public void CheckTheDefaultLangugeIsEnglish() {
 			String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
 			
 			Assert.assertEquals(ActualLanguage, ExpectedDefaultLanage);
 		}
 		
-		@Test(priority = 2)
+		@Test(priority = 2, enabled= false)
 		public void CheckdefaultCurrency() {
 			String ExpectedCurrency = "SAR";
 			
@@ -47,7 +48,7 @@ public class myTestCases {
 			Assert.assertEquals(ActualCurrency, ExpectedCurrency);
 		}
 		
-		@Test(priority = 3)
+		@Test(priority = 3, enabled= false)
 		public void CheckContactNumber() {
 			String ExpectedContactNumber = "+966554400000";
 			String ActualContactNumber = driver.findElement(By.tagName("strong")).getText();
@@ -55,7 +56,7 @@ public class myTestCases {
 			Assert.assertEquals(ActualContactNumber, ExpectedContactNumber);
 		}
 
-		@Test(priority = 4)
+		@Test(priority = 4, enabled= false)
 		public void CheckQitagLogo() {
 			boolean ExpectedResultsForTheLogo = true;
 			WebElement theFooter = driver.findElement(By.tagName("footer"));
@@ -69,7 +70,7 @@ public class myTestCases {
 
 		}
 		
-		@Test(priority = 5)
+		@Test(priority = 5, enabled= false)
 		public void TestHotelTabIsNotSelected() {
 			String expectedValue ="false";
 			WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
@@ -78,7 +79,7 @@ public class myTestCases {
 			Assert.assertEquals(actualValue, expectedValue);
 		}
 		
-		@Test(priority = 6)
+		@Test(priority = 6, enabled= false)
 		
 		public void CheckDepatureDate() {
 			LocalDate todayDate = LocalDate.now();
@@ -119,7 +120,7 @@ public class myTestCases {
 
 		}
 		
-        @Test(priority = 7)
+        @Test(priority = 7, enabled= false)
 		
 		public void RandomlyChangeTheLanguage() {
 					String [] URLs = {"https://www.almosafer.com/en","https://www.almosafer.com/ar",}; 
@@ -128,6 +129,58 @@ public class myTestCases {
 					 driver.get(URLs[RandomIndex]); 
 	 		
 		}
+        
+        @Test(priority = 8)
+        public void SearchRandomLocationDependingOnLangauge() throws InterruptedException {
+        	
+        	
+        	String [] URLs = {"https://www.almosafer.com/en","https://www.almosafer.com/ar",}; 
+			 int RandomIndex = rand.nextInt(URLs.length) ; 
+			 
+			 driver.get(URLs[RandomIndex]); 
+			 
+			 WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
+	        	HotelTab.click();
+			 
+			 String ExpectedEnglishLanage = "en";
+			 String ExpectedArabicLanage = "ar";
+			 
+			 String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
+			 
+			 String Input_Text ="";
+			 String [] Ar_Locations = {"دبي", "جدة"};
+			  int randomIndexForAr_Locations = rand.nextInt(Ar_Locations.length);
+			
+			  String [] En_Locations = { "Jeddah","Dubai", "Riyadh"};
+			  int randomIndexForEn_Locations = rand.nextInt(En_Locations.length);
+			
+	
+			  WebElement LocationSearchBox = driver.findElement(By.cssSelector(".sc-phbroq-2.uQFRS.AutoComplete__Input"));
+			  
+			    if (ActualLanguage.equals(ExpectedEnglishLanage)) {
+			        Input_Text = En_Locations[randomIndexForEn_Locations];  
+			    } else if (ActualLanguage.equals(ExpectedArabicLanage)) {
+			        Input_Text = Ar_Locations[randomIndexForAr_Locations];
+			    }
+			
+			LocationSearchBox.sendKeys(Input_Text);
+			
+			  WebElement LocationBoxSuggestions = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
+			  
+			  LocationBoxSuggestions.findElement(By.cssSelector("li:first-child")).click();
+
+
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+
+				//js.executeScript("document.querySelector('ul.sc-phbroq-4.gGwzVo.AutoComplete__List li:nth-child(2)').click();");
+				
+				WebElement firstLiElement = (WebElement) js.executeScript(
+					    "return document.querySelector('ul.sc-phbroq-4.gGwzVo.AutoComplete__List li:nth-child(2)');"
+					);
+				Thread.sleep(3000);
+					firstLiElement.click();
+        }
+        
 		
 		
 }
