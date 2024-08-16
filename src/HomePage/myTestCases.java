@@ -1,6 +1,9 @@
 package HomePage;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +19,7 @@ public class myTestCases {
 	WebDriver driver = new ChromeDriver();
 	String AlmusaferWebsiteURL= "https://global.almosafer.com/en";
 	String ExpectedDefaultLanage = "en";
+	Random rand = new Random(); 
 	
 	@BeforeTest 
 	
@@ -64,4 +68,16 @@ public class myTestCases {
 			Assert.assertEquals(ActualResultForThelogo, ExpectedResultsForTheLogo);
 
 		}
+		
+		@Test(priority = 5)
+		public void TestHotelTabIsNotSelected() {
+			String expectedValue ="false";
+			WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
+			String actualValue = HotelTab.getAttribute("aria-selected");
+			
+			Assert.assertEquals(actualValue, expectedValue);
+		}
+		
+		
+		
 }
