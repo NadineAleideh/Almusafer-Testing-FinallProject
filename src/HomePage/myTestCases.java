@@ -119,6 +119,15 @@ public class myTestCases {
 
 		}
 		
+        @Test(priority = 7)
+		
+		public void RandomlyChangeTheLanguage() {
+					String [] URLs = {"https://www.almosafer.com/en","https://www.almosafer.com/ar",}; 
+					 int RandomIndex = rand.nextInt(URLs.length) ; 
+					 
+					 driver.get(URLs[RandomIndex]); 
+	 		
+		}
 		
 		
 }
