@@ -78,6 +78,47 @@ public class myTestCases {
 			Assert.assertEquals(actualValue, expectedValue);
 		}
 		
+		@Test(priority = 6)
+		
+		public void CheckDepatureDate() {
+			LocalDate todayDate = LocalDate.now();
+			
+			//int Today  =todayDate.getDayOfMonth();
+			//System.out.println(Today+22);
+			
+			int Tomorrow = todayDate.plusDays(1).getDayOfMonth();
+			int ThedayAfterTomorrow = todayDate.plusDays(2).getDayOfMonth(); 
+			
+			List<WebElement> depatureAndArrivalDates = driver.findElements(By.className("LiroG")); 
+
+		 	String ActualDepatureDate = depatureAndArrivalDates.get(0).getText(); 
+		 	String ActualReturnDate = depatureAndArrivalDates.get(1).getText(); 
+		 	
+		 	
+		 	int ActualDepatureDateAsInt = Integer.parseInt(ActualDepatureDate); 
+		 	int ActualreturnDateAsInt = Integer.parseInt(ActualReturnDate); 
+
+
+		 	Assert.assertEquals(ActualDepatureDateAsInt, Tomorrow);
+		 	Assert.assertEquals(ActualreturnDateAsInt, ThedayAfterTomorrow);
+//
+//		 // Convert int variables to strings
+//		 	String TomorrowAsString = String.valueOf(todayDate.plusDays(1).getDayOfMonth());
+//		 	String ThedayAfterTomorrowAsString = String.valueOf(todayDate.plusDays(2).getDayOfMonth());
+//
+//		 	// Find the departure and arrival dates on the webpage
+//		 	List<WebElement> depatureAndArrivalDates = driver.findElements(By.className("LiroG")); 
+//
+//		 	// Get the actual departure and return dates as strings
+//		 	String ActualDepatureDate = depatureAndArrivalDates.get(0).getText(); 
+//		 	String ActualReturnDate = depatureAndArrivalDates.get(1).getText(); 
+//
+//		 	// Assert the equality of the dates
+//		 	Assert.assertEquals(ActualDepatureDate, TomorrowAsString);
+//		 	Assert.assertEquals(ActualReturnDate, ThedayAfterTomorrowAsString);
+
+		}
+		
 		
 		
 }
