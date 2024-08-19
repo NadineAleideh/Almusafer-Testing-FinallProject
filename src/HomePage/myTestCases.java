@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+//import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -256,5 +256,19 @@ public class myTestCases {
     		SearchHotelButton.click(); 
     	}
     	
+    	@Test(priority = 10)
+    	
+    	public void CheckThePageFullyLoaded() throws InterruptedException {
+    		
+    		boolean expectedResult = true ; 
+    		Thread.sleep(10000);
+    		String results = driver.findElement(By.xpath("//span[@data-testid='HotelSearchResult__resultsFoundCount']")).getText(); 
+    		
+    		boolean finished = results.contains("وجدنا")||results.contains("found");
+    		
+    		Assert.assertEquals(finished, expectedResult);
+    		
+    	
+    	}
 		
 }

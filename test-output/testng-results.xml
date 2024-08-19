@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="9" passed="3" failed="0" skipped="0">
+<testng-results ignored="6" total="10" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-19T16:31:50 EET" name="Default suite" finished-at="2024-08-19T16:31:57 EET" duration-ms="6436">
+  <suite started-at="2024-08-19T18:34:38 EET" name="Default suite" finished-at="2024-08-19T18:35:01 EET" duration-ms="23281">
     <groups>
     </groups>
-    <test started-at="2024-08-19T16:31:50 EET" name="Default test" finished-at="2024-08-19T16:31:57 EET" duration-ms="6436">
+    <test started-at="2024-08-19T18:34:38 EET" name="Default test" finished-at="2024-08-19T18:35:01 EET" duration-ms="23281">
       <class name="HomePage.myTestCases">
-        <test-method is-config="true" signature="mySetup()[pri:0, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T16:31:50 EET" name="mySetup" finished-at="2024-08-19T16:31:52 EET" duration-ms="2256" status="PASS">
+        <test-method is-config="true" signature="mySetup()[pri:0, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T18:34:38 EET" name="mySetup" finished-at="2024-08-19T18:34:40 EET" duration-ms="2401" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mySetup -->
-        <test-method signature="RandomlyChangeTheLanguage()[pri:7, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T16:31:52 EET" name="RandomlyChangeTheLanguage" finished-at="2024-08-19T16:31:53 EET" duration-ms="565" status="PASS">
+        <test-method signature="RandomlyChangeTheLanguage()[pri:7, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T18:34:40 EET" name="RandomlyChangeTheLanguage" finished-at="2024-08-19T18:34:41 EET" duration-ms="655" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RandomlyChangeTheLanguage -->
-        <test-method signature="FillHotelTab()[pri:8, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T16:31:53 EET" name="FillHotelTab" finished-at="2024-08-19T16:31:53 EET" duration-ms="377" status="PASS">
+        <test-method signature="FillHotelTab()[pri:8, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T18:34:41 EET" name="FillHotelTab" finished-at="2024-08-19T18:34:41 EET" duration-ms="549" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- FillHotelTab -->
-        <test-method signature="RandomlySelectTheNumberOfVistor()[pri:9, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T16:31:53 EET" name="RandomlySelectTheNumberOfVistor" finished-at="2024-08-19T16:31:57 EET" duration-ms="3207" status="PASS">
+        <test-method signature="RandomlySelectTheNumberOfVistor()[pri:9, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T18:34:41 EET" name="RandomlySelectTheNumberOfVistor" finished-at="2024-08-19T18:34:45 EET" duration-ms="3927" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RandomlySelectTheNumberOfVistor -->
+        <test-method signature="CheckThePageFullyLoaded()[pri:10, instance:HomePage.myTestCases@4eed46ee]" started-at="2024-08-19T18:34:45 EET" name="CheckThePageFullyLoaded" finished-at="2024-08-19T18:35:01 EET" duration-ms="15712" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckThePageFullyLoaded -->
       </class> <!-- HomePage.myTestCases -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
