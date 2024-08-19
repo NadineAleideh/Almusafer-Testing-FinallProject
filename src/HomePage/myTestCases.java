@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -120,7 +121,7 @@ public class myTestCases {
 
 		}
 		
-        @Test(priority = 7, enabled= false)
+        @Test(priority = 7, enabled= true)
 		
 		public void RandomlyChangeTheLanguage() {
 					String [] URLs = {"https://www.almosafer.com/en","https://www.almosafer.com/ar",}; 
@@ -130,57 +131,130 @@ public class myTestCases {
 	 		
 		}
         
-        @Test(priority = 8)
-        public void SearchRandomLocationDependingOnLangauge() throws InterruptedException {
-        	
-        	
-        	String [] URLs = {"https://www.almosafer.com/en","https://www.almosafer.com/ar",}; 
-			 int RandomIndex = rand.nextInt(URLs.length) ; 
-			 
-			 driver.get(URLs[RandomIndex]); 
-			 
-			 WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
-	        	HotelTab.click();
-			 
-			 String ExpectedEnglishLanage = "en";
-			 String ExpectedArabicLanage = "ar";
-			 
-			 String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
-			 
-			 String Input_Text ="";
-			 String [] Ar_Locations = {"دبي", "جدة"};
-			  int randomIndexForAr_Locations = rand.nextInt(Ar_Locations.length);
-			
-			  String [] En_Locations = { "Jeddah","Dubai", "Riyadh"};
-			  int randomIndexForEn_Locations = rand.nextInt(En_Locations.length);
-			
-	
-			  WebElement LocationSearchBox = driver.findElement(By.cssSelector(".sc-phbroq-2.uQFRS.AutoComplete__Input"));
-			  
-			    if (ActualLanguage.equals(ExpectedEnglishLanage)) {
-			        Input_Text = En_Locations[randomIndexForEn_Locations];  
-			    } else if (ActualLanguage.equals(ExpectedArabicLanage)) {
-			        Input_Text = Ar_Locations[randomIndexForAr_Locations];
-			    }
-			
-			LocationSearchBox.sendKeys(Input_Text);
-			
-			  WebElement LocationBoxSuggestions = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
-			  
-			  LocationBoxSuggestions.findElement(By.cssSelector("li:first-child")).click();
-
-
-				JavascriptExecutor js = (JavascriptExecutor) driver;
-
-				//js.executeScript("document.querySelector('ul.sc-phbroq-4.gGwzVo.AutoComplete__List li:nth-child(2)').click();");
-				
-				WebElement firstLiElement = (WebElement) js.executeScript(
-					    "return document.querySelector('ul.sc-phbroq-4.gGwzVo.AutoComplete__List li:nth-child(2)');"
-					);
-				Thread.sleep(3000);
-					firstLiElement.click();
-        }
+//        @Test(priority = 8)
+//        public void SearchRandomLocationDependingOnLangauge() throws InterruptedException {
+//        	
+//        	
+//        	String [] URLs = {"https://www.almosafer.com/en","https://www.almosafer.com/ar",}; 
+//			 int RandomIndex = rand.nextInt(URLs.length) ; 
+//			 
+//			 driver.get(URLs[RandomIndex]); 
+//			 
+//			 WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
+//	        	HotelTab.click();
+//			 
+//			 String ExpectedEnglishLanage = "en";
+//			 String ExpectedArabicLanage = "ar";
+//			 
+//			 String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
+//			 
+//			 String Input_Text ="";
+//			 String [] Ar_Locations = {"دبي", "جدة"};
+//			  int randomIndexForAr_Locations = rand.nextInt(Ar_Locations.length);
+//			
+//			  String [] En_Locations = { "Jeddah","Dubai", "Riyadh"};
+//			  int randomIndexForEn_Locations = rand.nextInt(En_Locations.length);
+//			
+//	
+//			 // WebElement LocationSearchBox = driver.findElement(By.cssSelector(".sc-phbroq-2.uQFRS.AutoComplete__Input"));
+//			  WebElement LocationSearchBox = driver.findElement(By.xpath("//input[@data-testid='AutoCompleteInput']"));
+//			  
+//			    if (ActualLanguage.equals(ExpectedEnglishLanage)) {
+//			        Input_Text = En_Locations[randomIndexForEn_Locations];  
+//			    } else if (ActualLanguage.equals(ExpectedArabicLanage)) {
+//			        Input_Text = Ar_Locations[randomIndexForAr_Locations];
+//			    }
+//			
+//			LocationSearchBox.sendKeys(Input_Text);
+//			
+//			  WebElement LocationBoxSuggestions = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
+//			  
+//			  LocationBoxSuggestions.findElement(By.cssSelector("li:first-child")).click();
+//
+//
+//				JavascriptExecutor js = (JavascriptExecutor) driver;
+//
+//				//js.executeScript("document.querySelector('ul.sc-phbroq-4.gGwzVo.AutoComplete__List li:nth-child(2)').click();");
+//				
+//				WebElement firstLiElement = (WebElement) js.executeScript(
+//					    "return document.querySelector('ul.sc-phbroq-4.gGwzVo.AutoComplete__List li:nth-child(2)');"
+//					);
+//				Thread.sleep(3000);
+//					firstLiElement.click();
+//        }
         
+      
 		
+        @Test(priority = 8)
+
+    	public void FillHotelTab() {
+    		
+    		String [] EnglishCities = {"Dubbai","Jeddah","riyadh"};
+    		int randomEnglishCity = rand.nextInt(EnglishCities.length);
+    		String [] ArabicCities = {"دبي","جدة"}; 
+    		int randomArabicCity = rand.nextInt(ArabicCities.length);
+
+
+    		WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
+
+    		HotelTab.click();
+    		WebElement SearchHotelInputField = driver.findElement(By.xpath("//input[@data-testid='AutoCompleteInput']"));
+
+    		String WebsiteURL = driver.getCurrentUrl();
+
+    		if (WebsiteURL.contains("ar")) {
+
+    			SearchHotelInputField.sendKeys(ArabicCities[randomArabicCity]);
+    		} else {
+    			SearchHotelInputField.sendKeys(EnglishCities[randomEnglishCity]);
+
+    		}
+    		
+    		
+    		WebElement ListOfLocations = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
+    				
+    				
+    				
+    			WebElement firstResult = ListOfLocations.findElements(By.tagName("li")).get(1); 
+    			firstResult.click(); 
+
+    	}
+    	@Test(priority = 9)
+    	
+    	public void RandomlySelectTheNumberOfVistor() {
+
+    		
+    		WebElement SelectorofTheVistor = driver.findElement(By.xpath("//select[@data-testid='HotelSearchBox__ReservationSelect_Select']")); 
+    		
+    		Select select  = new Select(SelectorofTheVistor); 
+
+    		
+    		// By index
+    		
+    		int randomIndex = rand.nextInt(2); 
+    		select.selectByIndex(randomIndex); 
+    		
+    		
+    		
+    		
+    		//By value 
+//    		select.selectByValue("B"); 
+
+    		
+    		
+    		
+    		// by visibleText
+//    		if(driver.getCurrentUrl().contains("ar")) {
+//    			select.selectByVisibleText("1 غرفة، 1 بالغ، 0 أطفال"); 
+    //
+//    		}else {
+//    			select.selectByValue("1 Room, 1 Adult, 0 Children"); 
+//    		}
+//    		
+    		
+    		WebElement SearchHotelButton = driver.findElement(By.xpath("//button[@data-testid='HotelSearchBox__SearchButton']"));
+    		SearchHotelButton.click(); 
+    	}
+    	
 		
 }
