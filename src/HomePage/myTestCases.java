@@ -271,4 +271,41 @@ public class myTestCases {
     	
     	}
 		
+    	@Test(priority = 11 , description = "Sort Items Lowest ToHighest Price" )
+    	
+    	public void SortItemsLowestToHighestPrice() {
+    		
+    		boolean expectedResults = true  ; 
+    		WebElement LowestPriceSortButton = driver.findElement(By.xpath("//button[@data-testid='HotelSearchResult__sort__LOWEST_PRICE']"));
+    		
+    		LowestPriceSortButton.click();
+    		
+    		WebElement PricesContainer = driver.findElement(By.cssSelector(".sc-htpNat.KtFsv.col-9"));
+    		
+    		List<WebElement> AllPrices = PricesContainer.findElements(By.className("Price__Value"));
+    		
+    		
+    		
+//    		List<WebElement> thePrices = driver.findElements(By.cssSelector(".Price__Wrapper.PriceDisplay__FinalRate.sc-dRCTWM.GFIG"));
+//    		
+//    		
+    		String LowestPrice = AllPrices.get(0).getText(); 
+    		String  HighestPrice = AllPrices.get(AllPrices.size()-1).getText();
+    		
+    		System.out.println(LowestPrice);
+    		System.out.println(HighestPrice);
+
+//    		
+
+    		int LowestPriceAsInt = Integer.parseInt(LowestPrice);
+    		int HighestPriceAsInt = Integer.parseInt(HighestPrice);
+    		
+    		
+    		boolean ActualResults = LowestPriceAsInt< HighestPriceAsInt ;
+    		
+    	Assert.assertEquals(ActualResults, expectedResults);
+
+
+    		
+    	}
 }
